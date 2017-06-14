@@ -26,6 +26,12 @@ The traveling salesman problem asks the following question: "Given a list of cit
 
 The figure above shows the solution of a TSP: The black line shows the shortest possible path that connects every red dot.
 
+
+We initialize our genome with the right number of numbers from $0$ to $i$. Each value of the list will represent a $(lat, long)$ of a city.
+Our genome is initialized with a random list and each at iteration we calculate the fitness and we re-randomize the genome.
+The fitness function represents the travelling between all cities.
+
+
 ## The problem
 
 Given a set of 14 GPS positions where each coordinate represents a city in Burman (Officially the Republic of the Union of Myanmar), the objective is to solve the TSP problem on it.
@@ -54,7 +60,7 @@ Our implementation gave us the following better route:
 
 `[9, 8, 10, 7, 0, 1, 2, 3, 4, 5, 11, 6, 12, 13]`
 
-The shortest path found is  km long.
+The shortest path found is 3354.52km long.
 
 This solution isn't necessarily the best solution to the problem: indeed, our implementation is a **metaheuristic** and thus provides a realistic solution without being exact or optimal. This is due to the fact that the TSP is a NP-complete problem.
 
@@ -77,7 +83,7 @@ Example:
  - mutation rate: 0.01
  - population size: 100, we don't need more because it gives the same result but takes more time
  - type of selection: `GTournamentSelector` this selector gave us the best results of all selectors
- - type of crossover used: `G1DListCrossoverOX`
+ - type of crossover used: none, crossover is not useful in our case because we don't want to have an unique list
  - number of generations: 200 more generations does not give a better result after 200. If we had more cities we should have had a higher number
 
 
@@ -85,7 +91,7 @@ Example:
 
 ![Evolutionnary graph](report/evolutionnary.png)\
 
-The blue curve seen in the plot above represents the fitness score for each generation. The range varies a lot and is due to the penalty.
+The blue curve seen in the plot above represents the fitness score for each generation. The range varies a lot and is due to the lack of penalty.
 
 ![Heatmap](report/heatmap.png)\
 
